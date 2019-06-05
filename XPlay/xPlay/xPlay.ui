@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>xPlayClass</class>
+ <widget class="QWidget" name="xPlayClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>800</width>
+    <height>600</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>xPlay</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="xPlay.qrc">
+    <normaloff>:/xPlay/Resources/logo.ico</normaloff>:/xPlay/Resources/logo.ico</iconset>
+  </property>
+  <widget class="QLabel" name="playTime">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>580</y>
+     <width>90</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 255, 255);
+font: 12pt &quot;黑体&quot;;</string>
+   </property>
+   <property name="text">
+    <string>00:00:00/</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="totalTime">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>580</y>
+     <width>80</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 255, 255);
+font: 12pt &quot;黑体&quot;;</string>
+   </property>
+   <property name="text">
+    <string>00:00:00</string>
+   </property>
+  </widget>
+  <widget class="VideoWidget" name="openGLWidget">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>600</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="XSlider" name="playSlider">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>530</y>
+     <width>731</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="maximum">
+    <number>999</number>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="openBtn">
+   <property name="geometry">
+    <rect>
+     <x>470</x>
+     <y>570</y>
+     <width>61</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton:!hover{border-image: url(:/xPlay/Resources/open_normal.png);}
+QPushButton:hover{border-image: url(:/xPlay/Resources/open_hot.png);}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="playBtn">
+   <property name="geometry">
+    <rect>
+     <x>680</x>
+     <y>570</y>
+     <width>51</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton:!hover{border-image: url(:/xPlay/Resources/play_normal.png);}
+QPushButton:hover{border-image: url(:/xPlay/Resources/play_hot.png);}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <zorder>openGLWidget</zorder>
+  <zorder></zorder>
+  <zorder>playTime</zorder>
+  <zorder>totalTime</zorder>
+  <zorder>playSlider</zorder>
+  <zorder>totalTime</zorder>
+  <zorder>openBtn</zorder>
+  <zorder>playBtn</zorder>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>VideoWidget</class>
+   <extends>QOpenGLWidget</extends>
+   <header>videowidget.h</header>
+  </customwidget>
+  <customwidget>
+   <class>XSlider</class>
+   <extends>QSlider</extends>
+   <header>xslider.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="xPlay.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>openBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>xPlayClass</receiver>
+   <slot>open()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>383</x>
+     <y>557</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>898</x>
+     <y>334</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>playBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>xPlayClass</receiver>
+   <slot>play()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>627</x>
+     <y>554</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>926</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>playSlider</sender>
+   <signal>sliderPressed()</signal>
+   <receiver>xPlayClass</receiver>
+   <slot>sliderPress()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>280</x>
+     <y>501</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>906</x>
+     <y>215</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>playSlider</sender>
+   <signal>sliderReleased()</signal>
+   <receiver>xPlayClass</receiver>
+   <slot>sliderRelease()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>173</x>
+     <y>501</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>876</x>
+     <y>177</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>open()</slot>
+  <slot>sliderPress()</slot>
+  <slot>sliderRelease()</slot>
+  <slot>play()</slot>
+ </slots>
+</ui>
